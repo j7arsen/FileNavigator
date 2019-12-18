@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.j7arsen.filenavigator"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(':data')
+    implementation project(':domain')
+
+    //support
+    implementation "androidx.appcompat:appcompat:${rootProject.ext.appCompatX}"
+    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraint}"
+    implementation "androidx.recyclerview:recyclerview:${rootProject.ext.recyclerview}"
+    //test
+    testImplementation "junit:junit:${rootProject.ext.junit}"
+    androidTestImplementation "androidx.test.ext:junit:${rootProject.ext.testJunit}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.testEspresso}"
+    //MVP
+    implementation "com.github.moxy-community:moxy:${rootProject.ext.moxy}"
+    implementation "com.github.moxy-community:moxy-androidx:${rootProject.ext.moxy}"
+    implementation "com.github.moxy-community:moxy-material:${rootProject.ext.moxy}"
+    annotationProcessor "com.github.moxy-community:moxy-compiler:${rootProject.ext.moxy}"
+    //DI
+    implementation "com.google.dagger:dagger:${rootProject.ext.dagger2}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${rootProject.ext.dagger2}"
+    implementation "com.jakewharton:butterknife:${rootProject.ext.butterKnife}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${rootProject.ext.butterKnife}"
+    //gson
+    implementation "com.google.code.gson:gson:${rootProject.ext.gson}"
+    //RX
+    implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxAndroid}"
+    implementation "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxJava}"
+    //Cicerone
+    implementation "ru.terrakok.cicerone:cicerone:${rootProject.ext.cicerone}"
+}

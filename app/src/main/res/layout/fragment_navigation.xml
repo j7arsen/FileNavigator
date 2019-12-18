@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stub="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/navigation_bar"
+        layout="@layout/include_toolbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/navigation_bar">
+
+        <RelativeLayout
+            android:id="@+id/rl_navigation_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_navigation_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:splitMotionEvents="false"
+                android:visibility="visible"></androidx.recyclerview.widget.RecyclerView>
+
+            <com.j7arsen.filenavigator.view.StubView
+                android:id="@+id/tvv_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                stub:icon="@android:drawable/ic_dialog_alert"
+                stub:text="@string/label_no_data" />
+
+        </RelativeLayout>
+
+        <com.j7arsen.filenavigator.view.progress.ProgressView
+            android:id="@+id/pv_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"></com.j7arsen.filenavigator.view.progress.ProgressView>
+
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">File Navigator</string>
+
+    <!--Errors-->
+    <string name="message_universal">Упс что-то пошло не так</string>
+
+    <string name="ok">Ок</string>
+    <string name="retry">Повторить</string>
+    <string name="error">Ошибка</string>
+    <string name="label_no_data">Нет данных</string>
+
+    <string name="file_empty">Файл пустой</string>
+    <string name="folder_empty">Папка пустая</string>
+
+</resources>

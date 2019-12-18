@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">data</string>
+
+    <!-- Errors -->
+    <string name="json_exception_message">Ошибка при парсинге json</string>
+    <string name="file_read_exception_message">Ошибка при чтении файла</string>
+    <string name="file_close_exception_message">Ошибка при закрытии потока чтения файла</string>
+
+</resources>
