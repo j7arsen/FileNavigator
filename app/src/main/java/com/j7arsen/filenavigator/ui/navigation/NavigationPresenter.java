@@ -54,19 +54,16 @@ public class NavigationPresenter extends BasePresenter<INavigationView> {
         getNavigationDataUseCase.execute(new DisposableObserver<NavigationDataModel>() {
             @Override
             protected void onStart() {
-                getViewState().hideEmptyListView();
                 getViewState().showProgress();
             }
 
             @Override
             public void onNext(NavigationDataModel navigationDataModel) {
-                if (navigationDataModel == null) {
-                    getViewState().showEmptyListView();
-                } else {
-                    List<NavigationDataModel> navigationDataModelList = new ArrayList<>();
+                List<NavigationDataModel> navigationDataModelList = new ArrayList<>();
+                if (navigationDataModel != null) {
                     navigationDataModelList.add(navigationDataModel);
-                    getViewState().setData(navigationDataModelList);
                 }
+                getViewState().setData(navigationDataModelList);
                 getViewState().hideProgress();
             }
 

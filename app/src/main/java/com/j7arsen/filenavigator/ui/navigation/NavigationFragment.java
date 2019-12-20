@@ -141,8 +141,13 @@ public class NavigationFragment extends BaseFragment implements INavigationView,
 
     @Override
     public void setData(List<NavigationDataModel> navigationDataModelList) {
-        if(navigationAdapter != null){
-            navigationAdapter.setData(navigationDataModelList);
+        if(navigationDataModelList != null && navigationDataModelList.size() != 0) {
+            hideEmptyListView();
+            if (navigationAdapter != null) {
+                navigationAdapter.setData(navigationDataModelList);
+            }
+        } else{
+            showEmptyListView();
         }
     }
 
