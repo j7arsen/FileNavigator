@@ -54,19 +54,16 @@ public class NavigationPresenter extends BasePresenter<INavigationView> {
         getNavigationDataUseCase.execute(new DisposableObserver<NavigationDataModel>() {
             @Override
             protected void onStart() {
-                getViewState().hideEmptyListView();
                 getViewState().showProgress();
             }
 
             @Override
             public void onNext(NavigationDataModel navigationDataModel) {
-                if (navigationDataModel == null) {
-                    getViewState().showEmptyListView();
-                } else {
-                    List<NavigationDataModel> navigationDataModelList = new ArrayList<>();
+                List<NavigationDataModel> navigationDataModelList = new ArrayList<>();
+                if (navigationDataModel != null) {
                     navigationDataModelList.add(navigationDataModel);
-                    getViewState().setData(navigationDataModelList);
                 }
+                getViewState().setData(navigationDataModelList);
                 getViewState().hideProgress();
             }
 
@@ -87,11 +84,7 @@ public class NavigationPresenter extends BasePresenter<INavigationView> {
         if (navigationDataModel != null) {
             switch (navigationDataModel.getType()) {
                 case FOLDER:
-                    if (navigationDataModel.getNavigationDataModelList() != null && navigationDataModel.getNavigationDataModelList().size() != 0) {
-                        router.navigateTo(new Screens.NavigatorScreen(navigationDataModel));
-                    } else {
-                        getViewState().showMessage(resUtils.getString(R.string.folder_empty));
-                    }
+                    router.navigateTo(new Screens.NavigatorScreen(navigationDataModel));
                     break;
                 case FILE:
                     if (navigationDataModel.getContent() != null && !navigationDataModel.getContent().isEmpty()) {
