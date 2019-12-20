@@ -177,14 +177,14 @@ public class NavigationFragment extends BaseFragment implements INavigationView,
 
     @Override
     public void showEmptyListView() {
-        rlNavigationContent.setVisibility(View.GONE);
+        rvNavigationList.setVisibility(View.GONE);
         tvvNavigation.show();
     }
 
     @Override
     public void hideEmptyListView() {
         tvvNavigation.hide();
-        rlNavigationContent.setVisibility(View.VISIBLE);
+        rvNavigationList.setVisibility(View.VISIBLE);
     }
 
     @Override
